@@ -31,7 +31,7 @@ export default function Home() {
           <div className="flex flex-col">
             {messages.map((message) => (
               <Message key={message.id} message={message.content} sender={message.sender} />
-            ))}
+            ))} 
           </div>
 
           <Input placeholder="Type your message here..." className="w-[90%] mx-auto mt-5" />
