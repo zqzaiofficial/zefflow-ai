@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
+import { SidebarProvider} from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/ui/app-sidebar";
+const geistSans = Poppins({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
+const geistMono = Poppins({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <SidebarProvider>
+          <AppSidebar />
+          <main>
+            {children}
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   );
